@@ -1,4 +1,4 @@
-package com.osae.casestudy.Deloitte_Digital_Away_Day;
+package com.osae.casestudy;
 
 /**
  * Hello world!
