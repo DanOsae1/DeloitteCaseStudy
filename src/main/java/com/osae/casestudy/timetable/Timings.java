@@ -5,12 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Timings{
+public class Timings {
 
 	private String time;
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm a");
-	private boolean lunchFlag = false;
-	private boolean finished = false;
 
 	public String getTime(int duration, String currentTime) throws ParseException {
 		Date date = simpleDateFormat.parse(currentTime);
@@ -25,33 +23,39 @@ public class Timings{
 	public String getCurrentTime() {
 		return time;
 	}
+	
+	public boolean isLunch() throws ParseException{
+		return this.lunchtime();
+	}
+	
+	public boolean isFinished() throws ParseException{
+		return this.isEndOfDay();
+	}
 
-	public boolean isLunch() throws ParseException {
+	private boolean lunchtime() throws ParseException {
+		boolean lunchFlag = false;
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-		
 		Date current = simpleDateFormat.parse(time);
-		Date lunchStart = simpleDateFormat.parse("11:55 am");
-		Date lunchEnd = simpleDateFormat.parse("12:55 pm");
-		
-		
-		if(current.equals(lunchStart) && current.before(lunchEnd)) {
+		Date lunchStart = simpleDateFormat.parse("11:45");
+		if (current.before(lunchStart)) {
 			lunchFlag = true;
 			return lunchFlag;
 		}
 		return lunchFlag;
-
 	}
 
-	public boolean isFinished() throws ParseException {
+	private boolean isEndOfDay() throws ParseException {
+		boolean finished = false;
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 		Date current = simpleDateFormat.parse(time);
-		Date finshed = simpleDateFormat.parse("16:55 pm");
-		Date fin = simpleDateFormat.parse("17:55 pm");
-		if(current.after(finshed) && current.before(fin)) {
+		Date finshed = simpleDateFormat.parse("15:45 pm");
+
+		if (current.before(finshed)) {
 			finished = true;
 			return finished;
 		}
 		return finished;
 	}
-	
-	
+
+
 }

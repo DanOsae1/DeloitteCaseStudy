@@ -5,10 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import com.osae.casestudy.App;
 
 public class Activities {
 
-	private static String filePath = "/activities.txt";
+	public static String filePath = "/activities.txt";
+	private final static Logger log = Logger.getLogger(Activities.class.getName());
 
 	public List<Event> getActivitesList() throws IOException {
 		return getActivitiesList(filePath);
@@ -16,6 +20,7 @@ public class Activities {
 
 	private List<Event> getActivitiesList(String filePath) throws IOException {
 		List<Event> activitiesList = new ArrayList<>();
+		log.info("Reading activities list file");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filePath)));
 		Event event;
 		String activities;
@@ -37,7 +42,6 @@ public class Activities {
 
 		}
 		return activitiesList;
-
 	}
 
 }
