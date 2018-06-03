@@ -21,7 +21,7 @@ public class Activities {
 	private List<Event> getActivitiesList(String filePath) throws IOException {
 		List<Event> activitiesList = new ArrayList<>();
 		log.info("Reading activities list file");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filePath)));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(Activities.class.getResourceAsStream(filePath)));
 		Event event;
 		String activities;
 		while ((activities = reader.readLine()) != null) {
