@@ -28,7 +28,7 @@ public class TimingsTest {
 	@Test
 	public void increaseTheTimeByOnehour() throws ParseException {
 		String time = timings.getTime(duration, testtime);
-		assertEquals("10:00 am", time);
+		assertEquals("10:00 AM", time);
 	}
 
 	@Test
