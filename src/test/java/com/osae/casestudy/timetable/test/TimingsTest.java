@@ -1,9 +1,10 @@
-package com.osae.casestudy.timetable.tests;
+package com.osae.casestudy.timetable.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +17,7 @@ public class TimingsTest {
 	String testTimeException;
 	int duration;
 	String testtime;
+	SimpleDateFormat sdf;
 
 	@Before
 	public void SetUp() {
@@ -23,12 +25,13 @@ public class TimingsTest {
 		testTimeException = "09:00";
 		duration = 60;
 		testtime = "09:00 AM";
+		sdf = new SimpleDateFormat("HH:MM");
 	}
 
 	@Test
 	public void increaseTheTimeByOnehour() throws ParseException {
 		String time = timings.getTime(duration, testtime);
-		assertEquals("10:00 AM", time);
+		assertEquals(sdf.parse("10:00 AM"), sdf.parse(time));
 	}
 
 	@Test
