@@ -20,7 +20,9 @@ public class Timetable {
 		this.teams = new Team[NumberOfTeams];
 	}
 
-	public Team[] getTeamTimetable() {
+
+
+    public Team[] getTeamTimetable() {
 		return this.teams;
 	}
 
